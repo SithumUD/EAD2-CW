@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import ItemNavbar from '../../layout/items/ItemNavbar';
 
-export default function Home(){
+export default function Items(){
     const [items, setItems]=useState([]);
     const {id}= useParams()
 
