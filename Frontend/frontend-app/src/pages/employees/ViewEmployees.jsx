@@ -2,60 +2,56 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-export default function ViewItem() {
+export default function ViewEmployee() {
 
-    const [item, setItem] = useState({
+    const [employee, setEmployee] = useState({
         name: "",
-        description: "",
-        category: "",
-        price: 0.0,
-        quantity: 0,
-        imageUrl: ""
+        email: "",
+        password: "",
+        role: "",
+        status: ""
     });
 
     const { id } = useParams();
 
     useEffect(() => {
-        loadItem();
+        loadEmployee();
     }, []); 
 
-    const loadItem = async () => {
-        const result = await axios.get(`http://localhost:8083/item-api/items/${id}`);
+    const loadEmployee = async () => {
+        const result = await axios.get(`http://localhost:8081/employee-api/employees/${id}`);
         console.log(result.data); 
-        setItem(result.data);
+        setEmployee(result.data);
     };
     
     return (
         <div className="container">
             <div className="row">
                 <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-                    <h2 className="text-center m-4">Item Details</h2>
+                    <h2 className="text-center m-4">Employee Details</h2>
                     <div className="card">
                         <div className="card-header">
-                            Details of item id:<b>{item.id}</b>
+                            Details of employee id:
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">
-                                    <b>Item Name:</b> {item.name}
+                                    <b>Employee Name:</b> {employee.name}
                                 </li>
                                 <li className="list-group-item">
-                                    <b>Description:</b> {item.description}
+                                    <b>Description:</b> {employee.email}
                                 </li>
                                 <li className="list-group-item">
-                                    <b>Category:</b> {item.category}
+                                    <b>Category:</b> {employee.password}
                                 </li>
                                 <li className="list-group-item">
-                                    <b>Price:</b> {item.price}
+                                    <b>Price:</b> {employee.role}
                                 </li>
                                 <li className="list-group-item">
-                                    <b>Quantity:</b> {item.quantity}
-                                </li>
-                                <li className="list-group-item">
-                                    <b>Image URL:</b> {item.imageUrl}
+                                    <b>Quantity:</b> {employee.status}
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <Link className="btn btn-primary my-2" to="/items">Back to Home</Link>
+                    <Link className="btn btn-primary my-2" to="/employees">Back to Home</Link>
                 </div>
             </div>
         </div>
