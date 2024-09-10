@@ -15,6 +15,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+
     @GetMapping(path = "/employees")
     public List<Employee> findAllEmployees(){
         return employeeService.getEmployees();
@@ -29,10 +30,20 @@ public class EmployeeController {
     public Employee createEmployee(@RequestBody Employee employee){
         return employeeService.createEmployee(employee);
     }
-
+/*
     @PutMapping(path = "/employees/{id}")
     public Employee updateEmployee(@RequestBody Employee employee){
         return employeeService.updateEmployee(employee);
+    }
+*/
+    @PutMapping(path = "/employees/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable int id, @RequestBody Employee employee) {
+        if (employeeService.getEmployeeById(id) != null) {
+            employee.setId(id);
+            return ResponseEntity.ok(employeeService.updateEmployee(employee));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 

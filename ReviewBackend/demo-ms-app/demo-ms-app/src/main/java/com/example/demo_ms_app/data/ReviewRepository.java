@@ -1,8 +1,11 @@
-package com.example.ms_app.data;
+package com.example.demo_ms_app.data;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+public interface ReviewRepository extends JpaRepository<Review,Integer> {
+
 }
+
