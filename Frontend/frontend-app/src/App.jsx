@@ -17,6 +17,9 @@ import Reviews from './pages/reviews/reviews.jsx';
 import AddReview from './pages/reviews/AddReviews.jsx';
 import ViewReview from './pages/reviews/ViewReviews.jsx';
 
+import Vehicles from './pages/vehicles/Vehicles.jsx';
+import AddVehicle from './pages/vehicles/AddVehicles.jsx';
+
 function App() {
 
   return (
@@ -40,6 +43,8 @@ function App() {
           <Route exact path="/reviews/add"        element={<AddReview/>}/>
           <Route exact path="/reviews/view/:id"   element={<ViewReview/>}/>
 
+          <Route exact path="/vehicles"            element={<Vehicles/>}/>
+          <Route exact path="/vehicles/add"        element={<AddVehicle/>}/>
 
         </Routes>
       </Router>
