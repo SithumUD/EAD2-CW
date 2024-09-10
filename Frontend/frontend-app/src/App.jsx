@@ -2,7 +2,7 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
-import ItemNavbar from './layout/items/ItemNavbar.jsx'
+//import ItemNavbar from './layout/items/ItemNavbar.jsx'
 import Items from './pages/items/Items.jsx'
 import ViewItem from './pages/items/ViewItems.jsx';
 import AddItem from './pages/items/AddItems.jsx';
@@ -13,6 +13,9 @@ import AddEmployee from './pages/employees/AddEmployees.jsx';
 import ViewEmployee from './pages/employees/ViewEmployees.jsx';
 import EditEmployee from './pages/employees/EditEmployees.jsx';
 
+import Reviews from './pages/reviews/reviews.jsx';
+import AddReview from './pages/reviews/AddReviews.jsx';
+import ViewReview from './pages/reviews/ViewReviews.jsx';
 
 function App() {
 
@@ -32,6 +35,11 @@ function App() {
           <Route exact path="/employees/add"        element={<AddEmployee/>}/>
           <Route exact path="/employees/view/:id"   element={<ViewEmployee/>}/>
           <Route exact path="/employees/edit/:id"   element={<EditEmployee/>}/>
+
+          <Route exact path="/reviews"            element={<Reviews/>}/>
+          <Route exact path="/reviews/add"        element={<AddReview/>}/>
+          <Route exact path="/reviews/view/:id"   element={<ViewReview/>}/>
+
 
         </Routes>
       </Router>
