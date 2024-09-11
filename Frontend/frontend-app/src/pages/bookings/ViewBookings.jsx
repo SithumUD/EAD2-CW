@@ -32,7 +32,7 @@ export default function ViewBooking() {
                 <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
                     <h2 className="text-center m-4">Booking Details</h2>
                     <div className="card">
-                        <div className="card-header">
+                        <div className="card-header my-4">
                             Details of booking id:{booking.id}
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">
