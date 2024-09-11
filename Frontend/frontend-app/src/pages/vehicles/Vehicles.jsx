@@ -50,7 +50,7 @@ export default function Vehicles(){
                                                 <td>{vehicle.type}</td>
                                                 <td>{vehicle.quantity}</td>
                                                 <td>{vehicle.status}</td>
-                                                <td>{vehicle.status}</td>
+                                                <td>{vehicle.nseats}</td>
                                                 <td>
                                                     <Link className='btn btn-primary mx-2' to={`/vehicles/view/${vehicle.id}`}>
                                                         View
