@@ -40,4 +40,15 @@ public class EmployeeService {
         }
         return null;
     }
+
+    public boolean validateEmployeeLogin(String email, String password) {
+        Optional<Employee> employeeOptional = employeeRepository.findByEmail(email);
+        if (employeeOptional.isPresent()) {
+            Employee employee = employeeOptional.get();
+            // Simple password validation (in production, use encrypted passwords)
+            return employee.getPassword().equals(password);
+        }
+        return false;  // Return false if user not found or password is incorrect
+    }
+
 }

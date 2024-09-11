@@ -51,4 +51,14 @@ public class EmployeeController {
     public Employee deleteEmployee(@PathVariable int id){
         return employeeService.deleteEmployee(id);
     }
+
+    @PostMapping("/employees/login")
+    public ResponseEntity<String> loginUser(@RequestBody Employee employee) {
+        boolean isValid = employeeService.validateEmployeeLogin(employee.getEmail(), employee.getPassword());
+        if (isValid) {
+            return ResponseEntity.ok("Login successful");
+        } else {
+            return ResponseEntity.status(401).body("Invalid email or password");
+        }
+    }
 }
