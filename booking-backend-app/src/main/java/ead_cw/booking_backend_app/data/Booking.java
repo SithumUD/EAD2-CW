@@ -28,7 +28,7 @@ public class Booking {
     private String date;
 
     @Column(name = "days")
-    private String days;
+    private int days;
 
     public int getId() {
         return id;
@@ -78,11 +78,11 @@ public class Booking {
         this.date = date;
     }
 
-    public String getDays() {
+    public int getDays() {
         return days;
     }
 
-    public void setDays(String days) {
+    public void setDays(int days) {
         this.days = days;
     }
 }
