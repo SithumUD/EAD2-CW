@@ -30,6 +30,7 @@ import Booking from './pages/bookings/Bookings.jsx';
 import AddBooking from './pages/bookings/AddBookings.jsx';
 import ViewBooking from './pages/bookings/ViewBookings.jsx';
 import EditBooking from './pages/bookings/EditBookings.jsx';
+import HomeReview from './pages/home/HomeReview.jsx';
 
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
 
           <Route index element={<Home/>}/>
           <Route path="/home" element={<Home/>}/>
+          <Route exact path="/home/reviews" element={<HomeReview/>}/>
+
 
           <Route exact path="/login" element={<Login/>}/>
           <Route exact path="/admin" element={<Admin/>}/>
