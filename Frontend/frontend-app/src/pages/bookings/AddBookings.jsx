@@ -45,7 +45,7 @@ export default function AddBooking() {
             <HomeNavbar />
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+                    <div className="col-md-6 offset-md-3 border rounded p-4 mt-4 shadow">
                         <h2 className="text-center m-4">Register Booking</h2>
 
                         <form onSubmit={(e) => onSubmit(e)}>
@@ -147,6 +147,11 @@ export default function AddBooking() {
                 </Link>
             </div>
             </div>
+    <footer className="bg-dark text-white text-center py-3 mt-auto">
+        <div className="container">
+            <p className="mb-0">&copy; {new Date().getFullYear()} Saman Tours. All rights reserved.</p>
+        </div>
+    </footer>
         </>
     );
 }

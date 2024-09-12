@@ -13,7 +13,7 @@ function HomeNavbar() {
           </Link>
 
           <Link className="btn btn-outline-light" to="/home/reviews">
-            Contact Us
+            Review Us
           </Link>
 
         </div>
