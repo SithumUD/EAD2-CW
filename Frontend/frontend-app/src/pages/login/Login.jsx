@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { FaEnvelope, FaLock } from 'react-icons/fa'; // Import icons
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -37,34 +38,38 @@ function Login() {
                 <form onSubmit={handleSubmit}>
                   {/* Email Input */}
                   <div className="form-floating mb-3">
-                    <input
-                      required
-                      autoComplete="off"
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="form-control"
-                      placeholder="name@example.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <label htmlFor="email">Email address</label>
+                    <div className="input-group">
+                      <span className="input-group-text"><FaEnvelope /></span>
+                      <input
+                        required
+                        autoComplete="off"
+                        type="email"
+                        id="email"
+                        name="email"
+                        className="form-control"
+                        placeholder="name@example.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
                   </div>
 
                   {/* Password Input */}
                   <div className="form-floating mb-3">
-                    <input
-                      required
-                      autoComplete="off"
-                      type="password"
-                      id="password"
-                      name="password"
-                      className="form-control"
-                      placeholder="Enter your password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <label htmlFor="password">Password</label>
+                    <div className="input-group">
+                      <span className="input-group-text"><FaLock /></span>
+                      <input
+                        required
+                        autoComplete="off"
+                        type="password"
+                        id="password"
+                        name="password"
+                        className="form-control"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </div>
                   </div>
 
                   {/* Error Message */}
