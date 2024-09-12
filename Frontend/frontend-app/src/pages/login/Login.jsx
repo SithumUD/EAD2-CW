@@ -1,30 +1,25 @@
 import React, { useState } from "react";
-import axios from "axios"; // Axios for HTTP requests
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  // State for storing email, password, and any login message
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate(); // Hook for programmatic navigation
+  const navigate = useNavigate();
 
-  // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent form refresh
+    e.preventDefault();
     try {
-      // Make a POST request to Spring Boot backend for login
       const response = await axios.post("http://localhost:8081/employee-api/employees/login", {
         email,
-        password
+        password,
       });
 
-      // If login is successful, redirect to /admin page
       if (response.status === 200) {
-        navigate("/admin"); // Redirect to the admin page
+        navigate("/admin");
       }
     } catch (error) {
-      // If login fails, show an error message
       setMessage("Invalid email or password");
     }
   };
@@ -32,77 +27,69 @@ function Login() {
   return (
     <>
       <div className="container">
-        <div className="row">
-          <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-            <h2 className="text-center m-4">Employee Login</h2>
-            <div className="card">
-              <form onSubmit={handleSubmit}> {/* Attach handleSubmit to form */}
-                <div data-mdb-input-init className="form-outline mb-4">
-                  <input
-                    required
-                    autoComplete="off"
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="form-control"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)} // Update email state
-                  />
-                  <label className="form-label" htmlFor="email">Email address</label>
-                </div>
-
-                <div data-mdb-input-init className="form-outline mb-4">
-                  <input
-                    required
-                    autoComplete="off"
-                    type="password"
-                    id="password"
-                    name="password"
-                    className="form-control"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)} // Update password state
-                  />
-                  <label className="form-label" htmlFor="password">Password</label>
-                </div>
-
-                <div className="row mb-4">
-                  <div className="col">
-                    <a href="#!">Forgot password?</a>
+        <div className="row justify-content-center">
+          <div className="col-lg-6 col-md-8">
+            <div className="card shadow-lg border-0 rounded-lg mt-5">
+              <div className="card-header">
+                <h3 className="text-center font-weight-light my-4">Employee Login</h3>
+              </div>
+              <div className="card-body">
+                <form onSubmit={handleSubmit}>
+                  {/* Email Input */}
+                  <div className="form-floating mb-3">
+                    <input
+                      required
+                      autoComplete="off"
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="form-control"
+                      placeholder="name@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <label htmlFor="email">Email address</label>
                   </div>
-                </div>
 
-                <div className="text-center">
-                  <button type="submit" className="btn btn-primary btn-block mb-4 w-50">
-                    Sign in
-                  </button>
-                </div>
+                  {/* Password Input */}
+                  <div className="form-floating mb-3">
+                    <input
+                      required
+                      autoComplete="off"
+                      type="password"
+                      id="password"
+                      name="password"
+                      className="form-control"
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <label htmlFor="password">Password</label>
+                  </div>
 
-                {/* Display message based on login attempt */}
-                {message && <div className="text-center"><p>{message}</p></div>}
+                  {/* Error Message */}
+                  {message && <div className="alert alert-danger text-center">{message}</div>}
 
-                <div className="text-center">
-                  <p>or sign up with:</p>
-                  <button type="button" className="btn btn-link btn-floating mx-1">
-                    <i className="fab fa-facebook-f"></i>
-                  </button>
-                  <button type="button" className="btn btn-link btn-floating mx-1">
-                    <i className="fab fa-google"></i>
-                  </button>
-                  <button type="button" className="btn btn-link btn-floating mx-1">
-                    <i className="fab fa-twitter"></i>
-                  </button>
-                  <button type="button" className="btn btn-link btn-floating mx-1">
-                    <i className="fab fa-github"></i>
-                  </button>
-                </div>
-              </form>
+                  {/* Submit Button */}
+                  <div className="d-grid gap-2">
+                    <button type="submit" className="btn btn-primary">
+                      Sign In
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              {/* Breach Button */}
+              <div className="card-footer text-center py-3">
+                <Link className="btn btn-outline-dark" to="/admin">
+                  Breach
+                </Link>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
-      <Link className="btn btn-outline-dark" to="/admin">
-        Login
-      </Link>
     </>
   );
 }
