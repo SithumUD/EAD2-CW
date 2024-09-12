@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import HomeNavbar from '../../layout/home/HomeNavbar'
+import HomeNavbar from '../../layout/home/HomeNavbar';
 
-export default function AddReview(){
+export default function AddReview() {
 
     let navigate = useNavigate();
     
@@ -26,6 +26,15 @@ export default function AddReview(){
         navigate("/reviews");
     };
 
+    // Function to clear the form
+    const onClear = () => {
+        setReview({
+            email: "",
+            subject: "",
+            description: ""
+        });
+    };
+
     return (
         <>
         <HomeNavbar />
@@ -42,7 +51,7 @@ export default function AddReview(){
                     </p>
                     
                     {/* Review Form */}
-                    <form action="" onSubmit={(e) => onSubmit(e)}>
+                    <form onSubmit={(e) => onSubmit(e)}>
                         <div className="mb-3">
                             <label htmlFor="Email" className="form-label">Email</label>
                             <input type="text" className="form-control" placeholder="Enter your email" name="email" value={email} onChange={(e) => onInputChange(e)} />
@@ -59,9 +68,10 @@ export default function AddReview(){
                         <button type="submit" className="btn btn-outline-primary">
                             Submit
                         </button>
-                        <Link className="btn btn-outline-danger mx-2" to="/employees">
-                            Cancel
-                        </Link>
+                        {/* Clear button to reset the form */}
+                        <button type="button" className="btn btn-outline-danger mx-2" onClick={onClear}>
+                            Clear
+                        </button>
                     </form>
 
                 </div>

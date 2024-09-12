@@ -71,6 +71,11 @@ export default function Bookings(){
             </table>
             </div>
         </div>
+        <div className="text-center mt-4 p-4">
+            <Link className="btn btn-outline-secondary" to="/admin">
+                Go Back
+            </Link>
+        </div>
         </>
     );
 }

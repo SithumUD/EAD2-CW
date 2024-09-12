@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import ReviewNavbar from '../../layout/reviews/reviewNavBar';
+import ReviewNavbar from '../../layout/reviews/ReviewNavbar';
 
 export default function Reviews(){
     const [reviews, setReviews]=useState([]);
@@ -64,6 +64,11 @@ export default function Reviews(){
             </table>
                 
             </div>
+        </div>
+        <div className="text-center mt-4 p-4">
+            <Link className="btn btn-outline-secondary" to="/admin">
+                Go Back
+            </Link>
         </div>
     </>
     );
