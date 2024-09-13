@@ -1,6 +1,7 @@
 package com.ead_cw.review_backend_app.data;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -11,12 +12,19 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
     @Column(name = "email" )
+    @NotEmpty(message = "email field is required")
     private String email;
+
     @Column(name = "subject")
+    @NotEmpty(message = "subject field is required")
     private  String subject;
+
     @Column(name = "description")
+    @NotEmpty(message = "description field is required")
     private String description;
+
     @Column(name = "date")
     private String date;
 

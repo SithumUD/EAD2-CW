@@ -13,10 +13,14 @@ function HomeNavbar() {
           <Link className="navbar-brand" to="/home">
             Saman Tours
           </Link>
-
-          <Link className="btn btn-outline-light" to="/home/reviews">
+          <div>
+          <Link className="btn btn-outline-light m-4" to="/home/reviews">
             Review Us
           </Link>
+          <Link className="btn btn-outline-light m-4" to="/login">
+            Employee
+          </Link>
+          </div>
 
         </div>
       </nav>

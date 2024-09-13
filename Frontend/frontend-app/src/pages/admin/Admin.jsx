@@ -13,11 +13,12 @@ function Admin() {
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           </button>
         </div>
+        <Link to="/home" className="btn btn-danger m-4">Logout</Link>
       </nav>
 
       {/* Main Admin Page Content */}
       <div className="container mt-5">
-        <h2 className="text-center mb-4">Admin Control Panel</h2>
+        <h2 className="text-center mb-5">Admin Control Panel</h2>
         <div className="row">
           {/* Manage Bookings */}
           <div className="col-md-4">
