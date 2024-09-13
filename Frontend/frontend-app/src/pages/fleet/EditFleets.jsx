@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function EditFleet(){
+  const [vehicles, setVehicles] = useState([]);
+  const [bookings, setBookings] = useState([]);
+  const [employees, setEmployees] = useState([]);
 
     let navigate= useNavigate()
     const {id}= useParams()
@@ -24,19 +27,36 @@ export default function EditFleet(){
 
     const {description, guide1Id, guide2Id, vehicle1Id, vehicle2Id, booking1Id, booking2Id, booking3Id, booking4Id, date, nDays}=fleet
 
-    const onInputChange=(e)=>{
-        setFleet({...fleet, [e.target.name]: e.target.value})
+    const onInputChange = (e) => {
+      setFleet({ ...fleet, [e.target.name]: e.target.value || "" });
     };
 
     useEffect(()=>{
         loadFleet()
+        loadVehicles();
+        loadBookings();
+        loadEmployees();
     }, []);
 
     const loadFleet = async ()=>{
         const result = await axios.get(`http://localhost:8085/fleet-api/fleets/${id}`)
         setFleet(result.data)
     }
-    
+    const loadVehicles = async () => {
+      const result = await axios.get("http://localhost:8083/vehicle-api/available-vehicles");
+      setVehicles(result.data);
+    };
+  
+    const loadBookings = async () => {
+      const result = await axios.get("http://localhost:8082/booking-api/bookings");
+      setBookings(result.data);
+    };
+  
+    const loadEmployees = async () => {
+      const result = await axios.get("http://localhost:8081/employee-api/available-guides");
+      setEmployees(result.data);
+    };
+
     const onSubmit =async (e)=>{
         e.preventDefault();
         await axios.put(`http://localhost:8085/fleet-api/fleets/${id}`, fleet)
