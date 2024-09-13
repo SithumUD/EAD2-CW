@@ -28,6 +28,14 @@ export default function Vehicles(){
         <>
         <VehicleNavbar/>
         <div className='container'>
+
+        <div className="input-group rounded">
+            <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <span className="input-group-text border-0" id="search-addon">
+                    <i className="fas fa-search"></i>
+                    </span>
+            </div>
+            
             <div className='py-4'>
             <table className="table border shadow">
                 <thead>
@@ -35,7 +43,6 @@ export default function Vehicles(){
                     <th scope="col">Vehicle ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Quantity</th>
                     <th scope="col">Status</th>
                     <th scope="col">Seats</th>
                     <th scope="col">Action</th>
@@ -48,7 +55,6 @@ export default function Vehicles(){
                                                 <th scope="row">{index+1}</th>
                                                 <td>{vehicle.name}</td>
                                                 <td>{vehicle.type}</td>
-                                                <td>{vehicle.quantity}</td>
                                                 <td>{vehicle.status}</td>
                                                 <td>{vehicle.nseats}</td>
                                                 <td>

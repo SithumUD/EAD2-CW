@@ -9,12 +9,11 @@ export default function AddVehicle(){
     const [vehicle, setVehicle]= useState({
         name: "",
         type: "",
-        quantity: "",
         status: "",
-        nSeats: ""
+        nseats: ""
     });
 
-    const{name, type, quantity, status, nSeats}=vehicle
+    const{name, type, status, nseats}=vehicle
 
     const onInputChange=(e)=>{
         setVehicle({...vehicle, [e.target.name]: e.target.value})
@@ -56,21 +55,6 @@ export default function AddVehicle(){
                         </select>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="Quantity" className="form-label">
-                            Quantity
-                        </label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            placeholder="Enter vehicle seats"
-                            name="quantity"
-                            value={quantity}
-                            min="1"
-                            max="6"
-                            onChange={(e) => onInputChange(e)}
-                        />
-                    </div>
-                    <div className="mb-3">
                         <label htmlFor="Seats" className="form-label">
                             Seats
                         </label>
@@ -78,8 +62,8 @@ export default function AddVehicle(){
                             type="number"
                             className="form-control"
                             placeholder="Enter vehicle seats"
-                            name="nSeats"
-                            value={nSeats}
+                            name="nseats"
+                            value={nseats}
                             min="1"
                             max="40"
                             onChange={(e) => onInputChange(e)}

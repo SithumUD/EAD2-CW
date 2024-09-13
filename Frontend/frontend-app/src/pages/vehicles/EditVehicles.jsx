@@ -10,13 +10,12 @@ export default function EditVehicle(){
     const [vehicle, setVehicle]= useState({
         name: "",
         type: "",
-        quantity: "",
-        nSeats: "",
+        nseats: "",
         status: ""
 
     });
 
-    const{name, type, quantity, nSeats, status}=vehicle
+    const{name, type, nseats, status}=vehicle
 
     const onInputChange=(e)=>{
         setVehicle({...vehicle, [e.target.name]: e.target.value})
@@ -57,21 +56,6 @@ export default function EditVehicle(){
                         </label>
                         <input type="text" className="form-control" placeholder="Enter vehicle type" name="type"   value={type} onChange={(e)=>onInputChange(e)}/>
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="Quantity" className="form-label">
-                            Quantity
-                        </label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            placeholder="Enter vehicle seats"
-                            name="quantity"
-                            value={quantity}
-                            min="1"
-                            max="6"
-                            onChange={(e) => onInputChange(e)}
-                        />
-                    </div>
 
                     <div className="mb-3">
                         <label htmlFor="Seats" className="form-label">
@@ -81,8 +65,8 @@ export default function EditVehicle(){
                             type="number"
                             className="form-control"
                             placeholder="Enter vehicle seats"
-                            name="nSeats"
-                            value={nSeats}
+                            name="nseats"
+                            value={nseats}
                             min="1"
                             max="40"
                             onChange={(e) => onInputChange(e)}

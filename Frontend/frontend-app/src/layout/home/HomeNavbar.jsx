@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 function HomeNavbar() {
   return (
+
+  <>
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
@@ -19,6 +21,8 @@ function HomeNavbar() {
         </div>
       </nav>
     </div>
+    
+  </>
   );
 }
 

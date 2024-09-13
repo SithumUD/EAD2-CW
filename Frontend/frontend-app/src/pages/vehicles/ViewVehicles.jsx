@@ -7,7 +7,6 @@ export default function ViewVehicle() {
     const [vehicle, setVehicle] = useState({
         name: "",
         type: "",
-        quantity: "",
         status: "",
         nseats: ""
     });
@@ -38,9 +37,6 @@ export default function ViewVehicle() {
                                 </li>
                                 <li className="list-group-item">
                                     <b>Type:</b> {vehicle.type}
-                                </li>
-                                <li className="list-group-item">
-                                    <b>Quantity:</b> {vehicle.quantity}
                                 </li>
                                 <li className="list-group-item">
                                     <b>Status:</b> {vehicle.status}

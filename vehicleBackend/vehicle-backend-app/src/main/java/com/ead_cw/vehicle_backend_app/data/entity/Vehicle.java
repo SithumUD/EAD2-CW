@@ -17,9 +17,6 @@ public class Vehicle {
         @Column(name = "type", nullable = false)
         private String type;
 
-        @Column(name = "quantity")
-        private int quantity;
-
         @Column(name = "status")
         private String status;
 
@@ -32,7 +29,6 @@ public class Vehicle {
         public Vehicle(String name, String type, int quantity, String status, int nSeats) {
             this.name = name;
             this.type = type;
-            this.quantity = quantity;
             this.status = status;
             this.nSeats = nSeats;
         }
@@ -60,14 +56,6 @@ public class Vehicle {
 
         public void setType(String type) {
             this.type = type;
-        }
-
-        public int getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(int quantity) {
-            this.quantity = quantity;
         }
 
         public String getStatus() {
