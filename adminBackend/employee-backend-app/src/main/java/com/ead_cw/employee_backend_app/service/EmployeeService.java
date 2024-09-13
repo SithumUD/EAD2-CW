@@ -52,4 +52,8 @@ public class EmployeeService {
         return false;  // Return false if user not found or password is incorrect
     }
 
+    public List<Employee> findAllActiveGuides() {
+        return employeeRepository.findAllActiveGuides();
+    }
+
 }

@@ -37,4 +37,8 @@ public class VehicleService {
     public void deleteVehicle(Integer id) {
         vehicleRepository.deleteById(id);
     }
+
+    public List<Vehicle> getAvailableVehicles() {
+        return vehicleRepository.findAllAvailableVehicles();
+    }
 }

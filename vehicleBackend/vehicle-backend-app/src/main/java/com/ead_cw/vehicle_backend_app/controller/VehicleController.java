@@ -10,20 +10,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/vehicles")
 @CrossOrigin("http://localhost:5173")
 public class VehicleController {
 
     @Autowired
     private VehicleService vehicleService;
 
-    @GetMapping
+    @GetMapping("/vehicles")
     public ResponseEntity<List<Vehicle>> getAllVehicles() {
         List<Vehicle> vehicles = vehicleService.getAllVehicles();
         return new ResponseEntity<>(vehicles, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/vehicles/{id}")
     public ResponseEntity<Vehicle> getVehicleById(@PathVariable("id") Integer id) {
         Vehicle vehicle = vehicleService.getVehicleById(id);
         if (vehicle != null) {
@@ -33,13 +32,13 @@ public class VehicleController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/vehicles")
     public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle vehicle) {
         Vehicle createdVehicle = vehicleService.createVehicle(vehicle);
         return new ResponseEntity<>(createdVehicle, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/vehicles/{id}")
     public ResponseEntity<Vehicle> updateVehicle(@PathVariable("id") Integer id, @RequestBody Vehicle vehicle) {
         vehicle.setId(id);
         Vehicle updatedVehicle = vehicleService.updateVehicle(vehicle);
@@ -50,9 +49,16 @@ public class VehicleController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/vehicles/{id}")
     public ResponseEntity<Void> deleteVehicle(@PathVariable("id") Integer id) {
         vehicleService.deleteVehicle(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/available-vehicles")
+    public ResponseEntity<List<Vehicle>> getAllAvailableVehicles() {
+        List<Vehicle> vehicles = vehicleService.getAvailableVehicles();
+        return new ResponseEntity<>(vehicles, HttpStatus.OK);
+    }
+
 }

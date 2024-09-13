@@ -4,6 +4,7 @@ package com.ead_cw.employee_backend_app.controller;
 import com.ead_cw.employee_backend_app.data.Employee;
 import com.ead_cw.employee_backend_app.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,7 +60,13 @@ public class EmployeeController {
         if (isValid) {
             return ResponseEntity.ok("Login successful");
         } else {
-            return ResponseEntity.status(401).body("Invalid email or password");
+            return ResponseEntity.status(401).body("Invalid email or password: Unauthorized access");
         }
+    }
+
+    @GetMapping("/available-guides")
+    public ResponseEntity<List<Employee>> getAllGuides() {
+        List<Employee> employees = employeeService.findAllActiveGuides();
+        return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 }

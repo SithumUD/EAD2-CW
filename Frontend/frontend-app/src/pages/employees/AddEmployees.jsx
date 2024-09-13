@@ -37,25 +37,26 @@ export default function AddEmployee(){
                         <label htmlFor="Name" className="form-label">
                             Name
                         </label>
-                        <input type="text" className="form-control" placeholder="Enter employee name" name="name"   value={name} onChange={(e)=>onInputChange(e)}/>
+                        <input required type="text" className="form-control" placeholder="Enter employee name" name="name"   value={name} onChange={(e)=>onInputChange(e)}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="Email" className="form-label">
                             Email
                         </label>
-                        <input type="text" className="form-control" placeholder="Enter employee email" name="email"   value={email} onChange={(e)=>onInputChange(e)}/>
+                        <input required type="text" className="form-control" placeholder="Enter employee email" name="email"   value={email} onChange={(e)=>onInputChange(e)}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="Password" className="form-label">
                             Password
                         </label>
-                        <input type="password" className="form-control" placeholder="Enter employee password" name="password"         value={password} onChange={(e)=>onInputChange(e)}/>
+                        <input required type="password" className="form-control" placeholder="Enter employee password" name="password"         value={password} onChange={(e)=>onInputChange(e)}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="Role" className="form-label">
                             Role
                         </label>
                         <select
+                            required
                             className="form-control"
                             name="role"
                             value={role}
@@ -65,6 +66,7 @@ export default function AddEmployee(){
                             <option value="admin">Admin</option>
                             <option value="recipient">Recipient</option>
                             <option value="manager">Manager</option>
+                            <option value="guide">Guide</option>
                             <option value="staff">Staff</option>
                         </select>
                     </div>
@@ -73,14 +75,16 @@ export default function AddEmployee(){
                             Status
                         </label>
                         <select
+                            required
                             className="form-control"
                             name="status"
                             value={status}
                             onChange={(e) => onInputChange(e)}
                             >
                             <option value="">Select status</option>
-                            <option value="Active">Active</option>
-                            <option value="Disabled">Disabled</option>
+                            <option value="active">Active</option>
+                            <option value="unavailable">Unavailable</option>
+                            <option value="disabled">Disabled</option>
                         </select>
                     </div>
 

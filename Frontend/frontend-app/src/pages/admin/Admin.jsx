@@ -70,9 +70,9 @@ function Admin() {
           <div className="col-md-4">
             <div className="card border-light shadow-sm mb-4">
               <div className="card-body text-center">
-                <h5 className="card-title">View Reports</h5>
-                <p className="card-text">Generate and view performance reports.</p>
-                <Link to="#" className="btn btn-primary disabled" tabIndex="-1" aria-disabled="true">Go to Reports</Link>
+                <h5 className="card-title">Manage Tour Fleets</h5>
+                <p className="card-text">Manage bookings and tours with Tour session fleets.</p>
+                <Link to="/fleets" className="btn btn-primary disabled" tabIndex="-1" aria-disabled="true">Go to Fleets</Link>
               </div>
             </div>
           </div>

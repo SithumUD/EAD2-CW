@@ -75,6 +75,7 @@ export default function EditEmployee(){
                             <option value="admin">Admin</option>
                             <option value="recipient">Recipient</option>
                             <option value="manager">Manager</option>
+                            <option value="guide">Guide</option>
                             <option value="staff">Staff</option>
                         </select>
                     </div>
@@ -89,15 +90,16 @@ export default function EditEmployee(){
                             onChange={(e) => onInputChange(e)}
                             >
                             <option value="">Select status</option>
-                            <option value="Active">Active</option>
-                            <option value="Disabled">Disabled</option>
+                            <option value="active">Active</option>
+                            <option value="unavailable">Unavailable</option>
+                            <option value="disabled">Disabled</option>
                         </select>
                     </div>
 
                     <button type="submit" className="btn btn-outline-primary">
                         Submit
                     </button>
-                    <Link className="btn btn-outline-danger mx-2" to="/">
+                    <Link className="btn btn-outline-danger mx-2" to="/admin">
                         Cancel
                     </Link>
                 </form>

@@ -29,11 +29,20 @@ import Vehicles from './pages/vehicles/Vehicles.jsx';
 import AddVehicle from './pages/vehicles/AddVehicles.jsx';
 import EditVehicle from './pages/vehicles/EditVehicles.jsx';
 import ViewVehicle from './pages/vehicles/ViewVehicles.jsx';
+
 import Booking from './pages/bookings/Bookings.jsx';
 import AddBooking from './pages/bookings/AddBookings.jsx';
 import ViewBooking from './pages/bookings/ViewBookings.jsx';
 import EditBooking from './pages/bookings/EditBookings.jsx';
+
 import HomeReview from './pages/home/HomeReview.jsx';
+
+import Fleets from './pages/fleet/Fleets.jsx';
+import AddFleet from './pages/fleet/AddFleets.jsx';
+import ViewFleet from './pages/fleet/ViewFleets.jsx';
+import EditFleet from './pages/fleet/EditFleets.jsx';
+
+
 
 
 function App() {
@@ -70,8 +79,10 @@ function App() {
           <Route exact path="/vehicles/view/:id"   element={<ViewVehicle/>}/>
           <Route exact path="/vehicles/edit/:id"   element={<EditVehicle/>}/>
           
-
-
+          <Route exact path="/fleets"            element={<Fleets/>}/>
+          <Route exact path="/fleets/add"        element={<AddFleet/>}/>
+          <Route exact path="/fleets/view/:id"   element={<ViewFleet/>}/>
+          <Route exact path="/fleets/edit/:id"   element={<EditFleet/>}/>
 
 
           {/*items are useless now anyway */}

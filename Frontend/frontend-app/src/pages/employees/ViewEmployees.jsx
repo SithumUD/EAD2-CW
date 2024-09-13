@@ -40,13 +40,13 @@ export default function ViewEmployee() {
                                     <b>Description:</b> {employee.email}
                                 </li>
                                 <li className="list-group-item">
-                                    <b>Category:</b> {employee.password}
+                                    <b>Password:</b> {employee.password}
                                 </li>
                                 <li className="list-group-item">
-                                    <b>Price:</b> {employee.role}
+                                    <b>Role:</b> {employee.role}
                                 </li>
                                 <li className="list-group-item">
-                                    <b>Quantity:</b> {employee.status}
+                                    <b>Status:</b> {employee.status}
                                 </li>
                             </ul>
                         </div>
