@@ -21,7 +21,7 @@ public class Booking {
     @Column(name = "budget")
     private String budget;
 
-    @Column(name = "packCount")
+    @Column(name = "pack_count")
     private int packCount;
 
     @Column(name = "date")
