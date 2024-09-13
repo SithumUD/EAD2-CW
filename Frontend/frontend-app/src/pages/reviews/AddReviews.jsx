@@ -54,7 +54,7 @@ export default function AddReview(){
                     <button type="submit" className="btn btn-outline-primary">
                         Submit
                     </button>
-                    <Link className="btn btn-outline-danger mx-2" to="/employees">
+                    <Link className="btn btn-outline-danger mx-2" to="/">
                         Cancel
                     </Link>
                 </form>

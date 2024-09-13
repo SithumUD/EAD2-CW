@@ -43,25 +43,62 @@ export default function AddVehicle(){
                         <label htmlFor="Type" className="form-label">
                             Type
                         </label>
-                        <input type="text" className="form-control" placeholder="Enter vehicle type" name="type"   value={type} onChange={(e)=>onInputChange(e)}/>
+                        <select
+                            className="form-control"
+                            name="type"
+                            value={type}
+                            onChange={(e) => onInputChange(e)}
+                        >
+                            <option value="">Select vehicle type</option>
+                            <option value="bus">Bus</option>
+                            <option value="van">Van</option>
+                            <option value="jeep">Jeep</option>
+                        </select>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="Quantity" className="form-label">
                             Quantity
                         </label>
-                        <input type="text" className="form-control" placeholder="Enter vehicle quantity" name="quantity"         value={quantity} onChange={(e)=>onInputChange(e)}/>
+                        <input
+                            type="number"
+                            className="form-control"
+                            placeholder="Enter vehicle seats"
+                            name="quantity"
+                            value={quantity}
+                            min="1"
+                            max="6"
+                            onChange={(e) => onInputChange(e)}
+                        />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="Seats" className="form-label">
                             Seats
                         </label>
-                        <input type="text" className="form-control" placeholder="Enter vehicle seats" name="nSeats"         value={nSeats} onChange={(e)=>onInputChange(e)}/>
+                        <input
+                            type="number"
+                            className="form-control"
+                            placeholder="Enter vehicle seats"
+                            name="nSeats"
+                            value={nSeats}
+                            min="1"
+                            max="40"
+                            onChange={(e) => onInputChange(e)}
+                        />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="Status" className="form-label">
                             Status
                         </label>
-                        <input type="text" className="form-control" placeholder="Enter vehicle status" name="status"         value={status} onChange={(e)=>onInputChange(e)}/>
+                        <select
+                            className="form-control"
+                            name="status"
+                            value={status}
+                            onChange={(e) => onInputChange(e)}
+                        >
+                            <option value="">Select status</option>
+                            <option value="available">available</option>
+                            <option value="unavailable">unavailable</option>
+                        </select>
                     </div>
 
 

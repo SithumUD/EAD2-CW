@@ -25,7 +25,7 @@ export default function AddBooking() {
     const onSubmit = async (e) => {
         e.preventDefault();
         await axios.post("http://localhost:8082/booking-api/bookings", booking)
-        navigate("/bookings")
+        navigate("/")
     };
 
     // Function to clear the form
@@ -79,25 +79,31 @@ export default function AddBooking() {
                                 <label htmlFor="Budget" className="form-label">
                                     Budget
                                 </label>
-                                <input
-                                    type="text"
+                                <select
+                                    id="budget"   // Preserve original id if any hmm
                                     className="form-control"
-                                    placeholder="Enter booking budget"
                                     name="budget"
                                     value={budget}
                                     onChange={(e) => onInputChange(e)}
-                                />
+                                >
+                                    <option value="" disabled>Select tour type</option>
+                                    <option value="Tropical Paradise Tour">Tropical Paradise Tour</option>
+                                    <option value="Cultural Heritage Tour">Cultural Heritage Tour</option>
+                                    <option value="Adventure Safari">Adventure Safari</option>
+                                </select>
                             </div>
-                            <div className="mb-3">
+                            <div className="mb-3"> 
                                 <label htmlFor="PackCount" className="form-label">
                                     PackCount
                                 </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="form-control"
-                                    placeholder="Enter booking pack count"
+                                    placeholder="Enter booking pack count(1-20)"
                                     name="packCount"
                                     value={packCount}
+                                    min="1" 
+                                    max="20"
                                     onChange={(e) => onInputChange(e)}
                                 />
                             </div>
@@ -105,25 +111,27 @@ export default function AddBooking() {
                                 <label htmlFor="Date" className="form-label">
                                     Date
                                 </label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Enter booking date"
-                                    name="date"
-                                    value={date}
-                                    onChange={(e) => onInputChange(e)}
-                                />
+                            <input
+                                type="date"
+                                className="form-control"
+                                placeholder="Enter booking date"
+                                name="date" 
+                                value={date}
+                                onChange={(e) => onInputChange(e)}
+                            />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="Days" className="form-label">
                                     Days
                                 </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="form-control"
-                                    placeholder="Enter booking days"
+                                    placeholder="Enter booking days(1day-8days)"
                                     name="days"
                                     value={days}
+                                    min="1" 
+                                    max="8"
                                     onChange={(e) => onInputChange(e)}
                                 />
                             </div>

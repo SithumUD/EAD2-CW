@@ -65,13 +65,33 @@ export default function EditEmployee(){
                         <label htmlFor="Role" className="form-label">
                             Role
                         </label>
-                        <input type="text" className="form-control" placeholder="Enter employee role" name="role"         value={role} onChange={(e)=>onInputChange(e)}/>
+                        <select
+                            className="form-control"
+                            name="role"
+                            value={role}
+                            onChange={(e) => onInputChange(e)}
+                        >
+                            <option value="">Select a role</option>
+                            <option value="admin">Admin</option>
+                            <option value="recipient">Recipient</option>
+                            <option value="manager">Manager</option>
+                            <option value="staff">Staff</option>
+                        </select>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="Status" className="form-label">
                             Status
                         </label>
-                        <input type="text" className="form-control" placeholder="Enter employee status" name="status"         value={status} onChange={(e)=>onInputChange(e)}/>
+                        <select
+                            className="form-control"
+                            name="status"
+                            value={status}
+                            onChange={(e) => onInputChange(e)}
+                            >
+                            <option value="">Select status</option>
+                            <option value="Active">Active</option>
+                            <option value="Disabled">Disabled</option>
+                        </select>
                     </div>
 
                     <button type="submit" className="btn btn-outline-primary">

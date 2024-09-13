@@ -35,7 +35,6 @@ export default function Employees(){
                     <th scope="col">Employee ID</th>
                     <th scope="col">name</th>
                     <th scope="col">email</th>
-                    <th scope="col">password</th>
                     <th scope="col">role</th>
                     <th scope="col">status</th>
                     <th scope="col">Action</th>
@@ -48,7 +47,6 @@ export default function Employees(){
                                                 <th scope="row">{index+1}</th>
                                                 <td>{employee.name}</td>
                                                 <td>{employee.email}</td>
-                                                <td>{employee.password}</td>
                                                 <td>{employee.role}</td>
                                                 <td>{employee.status}</td>
                                                 <td>
