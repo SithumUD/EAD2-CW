@@ -1,96 +1,58 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
+import { LogOut, Briefcase, Car, Users, Star, Map, Settings } from "lucide-react";
 
 function Admin() {
   return (
     <>
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/admin">
-            Admin Dashboard
-          </Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          </button>
-        </div>
-        <Link to="/home" className="btn btn-danger m-4">Logout</Link>
+      <nav className="bg-gradient-to-r from-blue-500 to-cyan-600 shadow-md p-4 flex justify-between items-center">
+        <Link className="text-white text-2xl font-semibold" to="/admin">
+          Admin Dashboard
+        </Link>
+        <Link to="/home" className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+          <LogOut size={20} /> Logout
+        </Link>
       </nav>
 
       {/* Main Admin Page Content */}
-      <div className="container mt-5">
-        <h2 className="text-center mb-5">Admin Control Panel</h2>
-        <div className="row">
+      <div className="container mx-auto mt-10 p-4">
+        <h2 className="text-center text-3xl font-bold text-gray-800 mb-6">Admin Control Panel</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Manage Bookings */}
-          <div className="col-md-4">
-            <div className="card border-light shadow-sm mb-4">
-              <div className="card-body text-center">
-                <h5 className="card-title">Manage Bookings</h5>
-                <p className="card-text">View and manage all customer bookings.</p>
-                <Link to="/bookings" className="btn btn-primary">Go to Bookings</Link>
-              </div>
-            </div>
-          </div>
-          
+          <AdminCard title="Manage Bookings" text="View and manage all customer bookings." link="/bookings" Icon={Briefcase} />
           {/* Manage Vehicles */}
-          <div className="col-md-4">
-            <div className="card border-light shadow-sm mb-4">
-              <div className="card-body text-center">
-                <h5 className="card-title">Manage Vehicles</h5>
-                <p className="card-text">Update and manage available vehicles.</p>
-                <Link to="/vehicles" className="btn btn-primary">Go to Vehicles</Link>
-              </div>
-            </div>
-          </div>
-          
+          <AdminCard title="Manage Vehicles" text="Update and manage available vehicles." link="/vehicles" Icon={Car} />
           {/* Manage Employees */}
-          <div className="col-md-4">
-            <div className="card border-light shadow-sm mb-4">
-              <div className="card-body text-center">
-                <h5 className="card-title">Manage Employees</h5>
-                <p className="card-text">Handle employee information and schedules.</p>
-                <Link to="/employees" className="btn btn-primary">Go to Employees</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
+          <AdminCard title="Manage Employees" text="Handle employee information and schedules." link="/employees" Icon={Users} />
           {/* Manage Reviews */}
-          <div className="col-md-4">
-            <div className="card border-light shadow-sm mb-4">
-              <div className="card-body text-center">
-                <h5 className="card-title">Manage Reviews</h5>
-                <p className="card-text">View and respond to customer reviews.</p>
-                <Link to="/reviews" className="btn btn-primary">Go to Reviews</Link>
-              </div>
-            </div>
-          </div>
-          
-          {/* View Reports - Disabled */}
-          <div className="col-md-4">
-            <div className="card border-light shadow-sm mb-4">
-              <div className="card-body text-center">
-                <h5 className="card-title">Manage Tour Fleets</h5>
-                <p className="card-text">Manage bookings and tours with Tour session fleets.</p>
-                <Link to="/fleets" className="btn btn-primary disabled" tabIndex="-1" aria-disabled="true">Go to Fleets</Link>
-              </div>
-            </div>
-          </div>
-          
-          {/* Manage Settings - Disabled */}
-          <div className="col-md-4">
-            <div className="card border-light shadow-sm mb-4">
-              <div className="card-body text-center">
-                <h5 className="card-title">Manage Settings</h5>
-                <p className="card-text">Update system settings and preferences.</p>
-                <Link to="#" className="btn btn-primary disabled" tabIndex="-1" aria-disabled="true">Go to Settings</Link>
-              </div>
-            </div>
-          </div>
+          <AdminCard title="Manage Reviews" text="View and respond to customer reviews." link="/reviews" Icon={Star} />
+          {/* Manage Tour Fleets */}
+          <AdminCard title="Manage Tour Fleets" text="Manage bookings and tours with Tour session fleets." link="/fleets" Icon={Map} disabled />
+          {/* Manage Settings */}
+          <AdminCard title="Manage Settings" text="Update system settings and preferences." link="#" Icon={Settings} disabled />
         </div>
       </div>
     </>
-  )
+  );
+}
+
+function AdminCard({ title, text, link, Icon, disabled = false }) {
+  return (
+    <div className={`bg-white shadow-lg rounded-xl p-6 text-center ${disabled ? "opacity-50" : "hover:shadow-xl transition"}`}>
+      <Icon size={40} className="text-blue-500 mx-auto mb-4" />
+      <h5 className="text-xl font-semibold text-gray-800">{title}</h5>
+      <p className="text-gray-600 mb-4">{text}</p>
+      <Link
+        to={link}
+        className={`px-4 py-2 rounded-lg text-white ${disabled ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"}`}
+        tabIndex={disabled ? "-1" : undefined}
+        aria-disabled={disabled}
+      >
+        {disabled ? "Unavailable" : `Go to ${title.split(" ")[1]}`}
+      </Link>
+    </div>
+  );
 }
 
 export default Admin;

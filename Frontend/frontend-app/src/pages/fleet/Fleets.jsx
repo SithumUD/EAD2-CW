@@ -1,120 +1,167 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
-import FleetNavbar from '../../layout/fleets/FleetNavbar';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link, useParams } from "react-router-dom";
+import FleetNavbar from "../../layout/fleets/FleetNavbar";
+import {
+  Container,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  Box,
+  Card,
+  CardContent,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
 
-export default function Fleets(){
-    const [fleets, setFleets]=useState([]);
-    const {id}= useParams()
+export default function Fleets() {
+  const [fleets, setFleets] = useState([]);
+  const { id } = useParams();
 
-    useEffect(()=>{
-        console.log("code with binal");
-        loadFleets();
-    }, [])
+  useEffect(() => {
+    console.log("Loading fleets...");
+    loadFleets();
+  }, []);
 
-    const loadFleets= async () => {
-        const result =await axios.get("http://localhost:8085/fleet-api/fleets");
-        console.log(result.data); 
-        setFleets(result.data);
-    }
+  const loadFleets = async () => {
+    const result = await axios.get("http://localhost:8085/fleet-api/fleets");
+    console.log(result.data);
+    setFleets(result.data);
+  };
 
-    const deleteFleet= async(id)=>{
-        await axios.delete(`http://localhost:8085/fleet-api/fleets/${id}`)
-        loadFleets();
-    }
+  const deleteFleet = async (id) => {
+    await axios.delete(`http://localhost:8085/fleet-api/fleets/${id}`);
+    loadFleets();
+  };
 
-    return(
+  return (
+    <>
+      <FleetNavbar />
+      <Container maxWidth="lg" sx={{ mt: 4 }}>
+        {/* Table View */}
+        <Typography variant="h4" gutterBottom>
+          Fleet List
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Fleet ID</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Launch Date</TableCell>
+                <TableCell>Tour Days</TableCell>
+                <TableCell>Actions</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {fleets.map((fleet, index) => (
+                <TableRow key={index}>
+                  <TableCell>{fleet.id}</TableCell>
+                  <TableCell>{fleet.description}</TableCell>
+                  <TableCell>{fleet.date}</TableCell>
+                  <TableCell>{fleet.nDays}</TableCell>
+                  <TableCell>
+                    <Button
+                      component={Link}
+                      to={`/fleets/view/${fleet.id}`}
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      sx={{ mr: 1 }}
+                    >
+                      View
+                    </Button>
+                    <Button
+                      component={Link}
+                      to={`/fleets/edit/${fleet.id}`}
+                      variant="outlined"
+                      color="primary"
+                      size="small"
+                      sx={{ mr: 1 }}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      onClick={() => deleteFleet(fleet.id)}
+                      variant="contained"
+                      color="error"
+                      size="small"
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
 
-        <>
-        <FleetNavbar/>
-        <div className='container'>
-            <div className='py-4'>
-            <table className="table border shadow">
-                <thead>
-                <tr>
-                    <th scope="col">Fleet ID</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Launch Date</th>
-                    <th scope="col">Tour days</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    fleets.map((fleet, index)=>(
-                                            <tr key={index}>
-                                                <td>{fleet.id}</td>
-                                                <td>{fleet.description}</td>
-                                                <td>{fleet.date}</td>
-                                                <td>{fleet.nDays}</td>
-                                                <td>
-                                                    <Link className='btn btn-primary mx-2' to={`/fleets/view/${fleet.id}`}>
-                                                        View
-                                                    </Link>
-                                                    <Link className="btn btn-outline-primary mx-2" to={`/fleets/edit/${fleet.id}`}>
-                                                        Edit
-                                                    </Link>
-                                                    <button className='btn btn-danger mx-2' onClick={()=>deleteFleet(fleet.id)}>
-                                                        Delete
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            )) 
-                }
-                </tbody>
-            </table>
+        {/* Card View */}
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h4" gutterBottom>
+            Fleet Details
+          </Typography>
+          {fleets.map((fleet, index) => (
+            <Card key={index} sx={{ mb: 2 }}>
+              <CardContent>
+                <Typography variant="h5" gutterBottom>
+                  Fleet ID: {fleet.id}
+                </Typography>
+                <List>
+                  <ListItem>
+                    <ListItemText primary="Description" secondary={fleet.description} />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Tour Date" secondary={fleet.date} />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Tour Days" secondary={fleet.nDays} />
+                  </ListItem>
+                </List>
+                <Box display="flex" gap={1}>
+                  <Button
+                    component={Link}
+                    to={`/fleets/view/${fleet.id}`}
+                    variant="contained"
+                    color="primary"
+                  >
+                    View
+                  </Button>
+                  <Button
+                    component={Link}
+                    to={`/fleets/edit/${fleet.id}`}
+                    variant="outlined"
+                    color="primary"
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={() => deleteFleet(fleet.id)}
+                    variant="contained"
+                    color="error"
+                  >
+                    Delete
+                  </Button>
+                </Box>
+              </CardContent>
+            </Card>
+          ))}
+        </Box>
 
-            {
-            fleets.map((fleet, index)=>(
-            <div key={index}>                                
-            <div className="container">
-                <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-                    <h2 className="text-center m-4">Fleet Id: {fleet.id}</h2>
-                        <div className="card">                        
-                            <div className="card-header">
-                                    <ul className="list-group list-group-flush">
-                                        <li className="list-group-item">
-                                            <b>Fleet Description:</b> {fleet.description}
-                                        </li>
-                                        <li className="list-group-item">
-                                            <b>Tour date:</b> {fleet.date}
-                                        </li>
-                                        <li className="list-group-item">
-                                            <b>Tour days:</b> {fleet.nDays}
-                                        </li>
-                                    </ul>
-                            </div>
-
-                            <div>
-                                <Link className='btn btn-primary mx-2' to={`/fleets/view/${fleet.id}`}>
-                                    View
-                                </Link>
-                                <Link className="btn btn-outline-primary mx-2" to={`/fleets/edit/${fleet.id}`}>
-                                    Edit
-                                </Link>
-                                <button className='btn btn-danger mx-2' onClick={()=>deleteFleet(fleet.id)}>
-                                    Delete
-                                </button>
-                            </div>
-
-                        </div>
-                </div>
-                </div>
-
-            </div>
-            )) 
-            }
-            
-            </div>
-        </div>
-        <div className="text-center mt-4 p-4">
-            <Link className="btn btn-outline-secondary" to="/admin">
-                Go Back
-            </Link>
-        </div>
-
-
-        
-        </>
-    );
+        {/* Go Back Button */}
+        <Box sx={{ mt: 4, textAlign: "center" }}>
+          <Button component={Link} to="/admin" variant="outlined">
+            Go Back
+          </Button>
+        </Box>
+      </Container>
+    </>
+  );
 }

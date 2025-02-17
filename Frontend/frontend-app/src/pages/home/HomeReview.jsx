@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import HomeNavbar from '../../layout/home/HomeNavbar';
 
 export default function AddReview() {
 
     let navigate = useNavigate();
-    
+
     const [review, setReview] = useState({
         email: "",
         subject: "",
@@ -17,7 +16,7 @@ export default function AddReview() {
     const { email, subject, description } = review;
 
     const onInputChange = (e) => {
-        setReview({...review, [e.target.name]: e.target.value});
+        setReview({ ...review, [e.target.name]: e.target.value });
     };
 
     const onSubmit = async (e) => {
@@ -26,7 +25,6 @@ export default function AddReview() {
         navigate("/reviews");
     };
 
-    // Function to clear the form
     const onClear = () => {
         setReview({
             email: "",
@@ -37,58 +35,83 @@ export default function AddReview() {
 
     return (
         <>
-        <HomeNavbar />
-        <div className="container">
-            <div className="row">
-                <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-                    
-                    {/* Introduction Section */}
-                    <h2 className="text-center m-4">We Value Your Feedback!</h2>
-                    <p className="text-center mb-4">
-                        At Saman Tours, we strive to provide the best experiences for our customers.
-                        Your feedback helps us improve and deliver top-notch services. Whether it's a
-                        compliment, suggestion, or issue, we would love to hear from you!
-                    </p>
-                    
-                    {/* Review Form */}
-                    <form onSubmit={(e) => onSubmit(e)}>
-                        <div className="mb-3">
-                            <label htmlFor="Email" className="form-label">Email</label>
-                            <input type="text" className="form-control" placeholder="Enter your email" name="email" value={email} onChange={(e) => onInputChange(e)} />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="Subject" className="form-label">Subject</label>
-                            <input type="text" className="form-control" placeholder="Enter your subject" name="subject" value={subject} onChange={(e) => onInputChange(e)} />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="Description" className="form-label">Description</label>
-                            <textarea className="form-control" placeholder="Enter your description" name="description" value={description} onChange={(e) => onInputChange(e)}></textarea>
+            <HomeNavbar />
+            <div className="container py-5">
+                <div className="row justify-content-center">
+                    <div className="col-md-8 col-lg-6">
+                        
+                        {/* Introduction Section */}
+                        <div className="text-center mb-5">
+                            <h2 className="display-4 text-primary fw-bold">We Value Your Feedback!</h2>
+                            <p className="lead text-muted">At Saman Tours, we aim to provide the best possible experiences for our customers. Your feedback helps us improve and deliver excellent services. Whether it's a compliment, suggestion, or issue, we'd love to hear from you!</p>
                         </div>
 
-                        <button type="submit" className="btn btn-outline-primary">
-                            Submit
-                        </button>
-                        {/* Clear button to reset the form */}
-                        <button type="button" className="btn btn-outline-danger mx-2" onClick={onClear}>
-                            Clear
-                        </button>
-                    </form>
+                        {/* Review Form */}
+                        <div className="card shadow-lg rounded-3 border-0">
+                            <div className="card-body p-5">
+                                <form onSubmit={onSubmit}>
+                                    <div className="mb-4">
+                                        <label htmlFor="email" className="form-label fs-5">Email Address</label>
+                                        <input
+                                            type="email"
+                                            className="form-control shadow-sm"
+                                            placeholder="Enter your email"
+                                            name="email"
+                                            value={email}
+                                            onChange={onInputChange}
+                                            required
+                                        />
+                                    </div>
 
-                </div>
+                                    <div className="mb-4">
+                                        <label htmlFor="subject" className="form-label fs-5">Subject</label>
+                                        <input
+                                            type="text"
+                                            className="form-control shadow-sm"
+                                            placeholder="Enter the subject"
+                                            name="subject"
+                                            value={subject}
+                                            onChange={onInputChange}
+                                            required
+                                        />
+                                    </div>
 
-                <div className="text-center mt-4 p-4">
-                    <Link className="btn btn-outline-secondary" to="/home">
-                        Go Back
-                    </Link>
+                                    <div className="mb-4">
+                                        <label htmlFor="description" className="form-label fs-5">Description</label>
+                                        <textarea
+                                            className="form-control shadow-sm"
+                                            placeholder="Enter your feedback here"
+                                            name="description"
+                                            value={description}
+                                            onChange={onInputChange}
+                                            rows="4"
+                                            required
+                                        ></textarea>
+                                    </div>
+
+                                    <div className="d-flex justify-content-between mt-4">
+                                        <button type="submit" className="btn btn-primary btn-lg px-4 py-2">Submit</button>
+                                        <button type="button" className="btn btn-danger btn-lg px-4 py-2" onClick={onClear}>Clear</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div className="text-center mt-4">
+                            <Link className="btn btn-outline-primary btn-lg" to="/home">
+                                Go Back
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <footer className="bg-dark text-white text-center py-3 mt-auto">
-            <div className="container">
-                <p className="mb-0">&copy; {new Date().getFullYear()} Saman Tours. All rights reserved.</p>
-            </div>
-        </footer>
+
+            {/* Footer */}
+            <footer className="bg-dark text-white text-center py-4 mt-5">
+                <div className="container">
+                    <p className="mb-0">&copy; {new Date().getFullYear()} Saman Tours. All rights reserved.</p>
+                </div>
+            </footer>
         </>
-    )
+    );
 }
